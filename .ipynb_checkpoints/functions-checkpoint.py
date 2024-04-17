@@ -20,7 +20,6 @@ def calculate_technical_indicators(df):
     rs = gain / loss
     indicators_df['rsi'] = 100 - (100 / (1 + rs))
 
-    # Merge the calculated indicators DataFrame with the original DataFrame
     df = pd.concat([df, indicators_df], axis=1)
 
     return df
