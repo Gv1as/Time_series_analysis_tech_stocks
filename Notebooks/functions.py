@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+from statsmodels.tsa.stattools import adfuller
 def calculate_technical_indicators(df):
     # Create a new DataFrame to store the calculated indicators
     indicators_df = pd.DataFrame(index=df.index)
@@ -23,3 +23,21 @@ def calculate_technical_indicators(df):
     df = pd.concat([df, indicators_df], axis=1)
 
     return df
+
+def mean_absolute_percentage_error(y_true, y_pred): 
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+def check_stationarity(ts):
+    dftest = adfuller(ts)
+    adf = dftest[0]
+    pvalue = dftest[1]
+    critical_value = dftest[4]['5%']
+    if (pvalue < 0.05) and (adf < critical_value):
+        print('The series is stationary')
+    else:
+        print('The series is NOT stationary')
+
+def perform_adf_test(ts):
+    adf_result = adfuller(ts)
+    return adf_result
