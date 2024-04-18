@@ -20,11 +20,13 @@ This repository contains the implementation and analysis of ARIMA, SARIMA, and P
 - **AVGO**: The SARIMA (4) model with parameters `order=(0, 1, 0)`, `seasonal_order=(0, 0, 1, 12)` was most effective. Errors: **MSE**: 1215.51, **MAPE**: 1.88%.
 - **TSM**: The SARIMA (12) model with parameters `order=(0, 1, 2)`, `seasonal_order=(1, 0, 1, 12)` performed optimally. Errors: **MSE**: 11.46, **MAPE**: 1.93%.
 
+## Methods and Fine-Tuning
 ### Prophet
 - **Parameter Adjustment**: Focused on fine-tuning the changepoint sensitivity to better adapt to sudden changes in the trend.
 - **Box-Cox Transformation**: Applied to normalize the distribution of residuals, improving the model’s predictive accuracy.
 - **Holiday Effects**: Integrated specific models for handling holidays and special events which significantly impact stock prices.
 
+### Model Performance for Specific Stocks
 - **NVDA Stock**:
   - **Hyperparameter Tuning**: `{'changepoint_prior_scale': 0.1, 'seasonality_prior_scale': 0.01}`
   - **Box-Cox Transformation**: Applied to normalize the distribution of residuals.
